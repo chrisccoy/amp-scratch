@@ -33,7 +33,7 @@ Full documentation on the CLI functionality can be found [here] (https://github.
 
 ## TROUBLESHOOTING
 
-The current version of docker that is running in the swarm is `1.12.1`. In some cases Docker may become unstable and require a user to manually manage the installation, on the swarm host machine. Below are some useful commands to keep handy, when the situation arises. Note:
+The current version of docker that is running in the swarm is `1.12.1`. In some cases, during the development cycle, it mght be necessary to manually manage the Docker installation, on the swarm host machine. Below are some useful commands to keep handy, when the situation arises.
 
 
 ***NOTE***: You will need to be given access to the pem file containing the private SSH Key in order to execute the following commands. For example:

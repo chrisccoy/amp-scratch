@@ -32,6 +32,20 @@ In order to monitor and/or manage the AMP cluster the *server* option should be 
 
 ## TROUBLESHOOTING
 
-The current version of docker that is running in the swarm is `1.12.1`. This version of docker is considered experimental and under certain circumstances, it might be necessary to manually manage the installation on the swarm host machine. Below are some useful commands to keep handy, when the situation arises.
+The current version of docker that is running in the swarm is `1.12.1`. This version of docker is considered experimental and under certain circumstances, it might be necessary to manually manage the installation on the swarm host machine. Below are some useful commands to keep handy, when the situation arises. Note:
 
 
+You will need to be given access to the pem file containing the private SSH Key in order to execute the following commands.
+
+### Delete All Services
+`docker service rm $(docker service ls -q) `
+
+### Remove All  Containers
+`docker rm -f $(docker ps -aq)`
+
+### Remove the Docker Networks
+`docker network rm $(docker network ls -q)`
+
+### Restart the Docker Daemon
+
+`sudo service docker restart`

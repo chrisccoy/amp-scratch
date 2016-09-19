@@ -6,20 +6,20 @@ It is assumed that a swarm manager has already been provisioned and is running o
 ##Prerequisites
 
  - [AMP Cli](https://github.com/appcelerator/amp#prerequisites) installed on developer machine
- - Be sure to enable [OAUTH] (https://github.com/appcelerator/amp#cli) in order to run the CLI
- -	AWS Instance running at a minimum swarm manager
+
+ -	AWS Instance running at least the swarm manager (A medium sized EC2 instance is recommended)
 
 ## Ports
 
 By default, AMP uses HAPROXY to route traffic from external sources into the swarm cluster. The accessible ports should be:
 
 ### Port 8080
-This port is reserved for the amplifier service and is responsible for all internal interaction with the cluster. This included monitoring and cluster management.
+This port is reserved for the `amplifier` service, which is responsible for all internal interaction with the cluster.
 
-###Port 80 
-is reserved for the admin UI
+###Port 80 and 443
+These ports are reserved for HTTP and HTTPS respectively. Application services that have been deployed can be reached via HTTP through these ports. In order to route traffic to internal containers, a public DNS entry should be created in order allow access to internal containers. As an example, a service named `pinger` could be reached via `pinger.engage.amp.appcelerator.io`, assuming a DNS entry exists for the subdomain `engage.amp.appcelerator.io`
 
-In order to route traffic to internal containers, a public DNS entry should be created in order allow access to internal containers. For example, `engage.amp.appcelerator.io`
+
 
 
 ## Using the CLI
@@ -27,16 +27,18 @@ In order to monitor and/or manage the AMP cluster the *server* option should be 
 
 `amp --server engage.amp.appcelerator.io:8080 stats`
 
-
+Full documentation on the CLI functionality can be found [here] (https://github.com/appcelerator/amp#cli)
 
  
 
 ## TROUBLESHOOTING
 
-The current version of docker that is running in the swarm is `1.12.1`. This version of docker is considered experimental and under certain circumstances, it might be necessary to manually manage the installation on the swarm host machine. Below are some useful commands to keep handy, when the situation arises. Note:
+The current version of docker that is running in the swarm is `1.12.1`. In some cases Docker may become unstable and require a user to manually manage the installation, on the swarm host machine. Below are some useful commands to keep handy, when the situation arises. Note:
 
 
-You will need to be given access to the pem file containing the private SSH Key in order to execute the following commands.
+***NOTE***: You will need to be given access to the pem file containing the private SSH Key in order to execute the following commands. For example:
+`ssh -i ~/.ssh/amp-engage ubuntu@54.183.106.39`
+
 
 ### Delete All Services
 `docker service rm $(docker service ls -q) `

@@ -1,11 +1,12 @@
 # AMP AWS Instructions
 
-The following readme is a general summary on how to access and use AMP within an AWS hosted instance. 
+The following readme is a general summary on how to access and use AMP within an AWS hosted VPC. 
 It is assumed that a swarm manager has already been provisioned and is running on AWS. 
 
 ##Prerequisites
 
  - [AMP Cli](https://github.com/appcelerator/amp#prerequisites) installed on developer machine
+ - Be sure to enable [OAUTH] (https://github.com/appcelerator/amp#cli) in order to run the CLI
  -	AWS Instance running at a minimum swarm manager
 
 ## Ports

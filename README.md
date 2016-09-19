@@ -49,3 +49,8 @@ You will need to be given access to the pem file containing the private SSH Key 
 ### Restart the Docker Daemon
 
 `sudo service docker restart`
+
+### Remove Docker Volumes
+
+`docker volume rm $(docker volume ls -q)`
+
